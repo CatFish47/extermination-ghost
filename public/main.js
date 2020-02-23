@@ -120,6 +120,8 @@ function update() {
         MOUSE.x < 100 + canvas.width/5 && MOUSE.y < canvas.height/3 + canvas.height/7) {
 
       gameState = 1;
+      startMusic.pause();
+      bgMusic.play();
     }
   } else if (gameState == 1) {
     checkWin();
@@ -136,6 +138,8 @@ function update() {
 function checkWin() {
   if (enemies.length == 0) {
     gameState = 3;
+    bgMusic.pause();
+    winMusic.play();
   }
 }
 
@@ -169,6 +173,8 @@ function checkLoot() {
 function updatePlayer() {
   if (player.hp == 0) {
     gameState = 2;
+    bgMusic.pause();
+    loseMusic.play();
   }
 
   if (KEYS_DOWN['w'] == true) {
@@ -263,6 +269,9 @@ function updateEnemies() {
       continue;
     } else if (renderedEnemies[i].near(player.x, player.y) && renderedEnemies[i].cooldown <= 0) {
       if (renderedEnemies[i].atkPattern[renderedEnemies[i].patternIndex] == "attack") {
+        let bulletAudio = new Audio('audio/pew.mp3');
+        bulletAudio.play();
+
         bullets.push(new Bullet(canvas.width/4 - (player.x - renderedEnemies[i].x)*SCALE,
                                   canvas.height/4 - (player.y - renderedEnemies[i].y)*SCALE,
                                   canvas.width/4, canvas.height/4, renderedEnemies[i].dmg, false));
@@ -326,6 +335,8 @@ function checkBullet() {
 
   if (MOUSE["mousedown"] == true && cooldown == 0) {
     if (player.shoot()) {
+      let bulletAudio = new Audio('audio/pew.mp3');
+      bulletAudio.play();
       bullets.push(new Bullet(canvas.width/4, canvas.height/4, MOUSE.x, MOUSE.y, player.dmg, true));
       cooldown = MAX_COOLDOWN;
     }

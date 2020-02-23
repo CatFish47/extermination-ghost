@@ -16,6 +16,13 @@ var TEXTUREMAP = {};
 // TEXTUREMAP[COLORMAP.corridor.l] = TEXTURESETS.wall;
 // TEXTUREMAP[COLORMAP.corridor.r] = TEXTURESETS.wall;
 
+var startMusic = new Audio('audio/start.mp3');
+startMusic.loop = true;
+var bgMusic = new Audio('audio/background.mp3')
+bgMusic.loop = true;
+var loseMusic = new Audio('audio/lose.mp3')
+var winMusic = new Audio('audio/win.mp3')
+
 var ENEMY_IMAGES = {
   "0": new Image(),
   "1": new Image(),
@@ -117,6 +124,8 @@ class Loot {
     let stat = eval(this.stat)
     stat += this.num;
     this.used = true;
+    let lootMusic = new Audio('audio/loot.mp3')
+    lootMusic.play();
   }
 
   near(x, y) {
