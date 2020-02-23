@@ -1,0 +1,13 @@
+{
+  "name": "Ghost Extermination",
+  "version": "1.0.0",
+  "description": "Wipe the ghosts out",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CatFish47",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
