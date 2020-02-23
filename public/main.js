@@ -184,7 +184,8 @@ function updatePlayer() {
     player.move(STEP, 0);
   }
 
-  let playerImgSrc = "sprites/player/player_";
+  let stage = 0;
+  let phase = 0;
 
   let theta = Math.atan((MOUSE.y - canvas.height/4) / (MOUSE.x - canvas.width/4));
 
@@ -193,16 +194,14 @@ function updatePlayer() {
   }
 
   if (Math.PI/4 <= theta && theta < 3*Math.PI/4) {
-    playerImgSrc += 0;
+    stage = 0;
   } else if (-Math.PI/4 <= theta && theta < Math.PI/4) {
-    playerImgSrc += 1;
+    stage = 1;
   } else if (3*Math.PI/4 <= theta && theta < 5*Math.PI/4) {
-    playerImgSrc += 3;
+    stage = 3;
   } else {
-    playerImgSrc += 2;
+    stage = 2;
   }
-
-  playerImgSrc += "_"
 
   if (KEYS_DOWN['w'] == true || KEYS_DOWN['a'] == true || KEYS_DOWN['s'] == true || KEYS_DOWN['d'] == true) {
     player.changeState();
@@ -210,10 +209,9 @@ function updatePlayer() {
     player.state = 0;
   }
 
-  playerImgSrc += player.state;
-  playerImgSrc += ".png"
+  phase = player.state;
 
-  player.img.src = playerImgSrc;
+  player.img = PLAYER_IMAGES[stage][phase];
 }
 
 function checkBulletCollision() {
@@ -293,7 +291,7 @@ function updateEnemies() {
       renderedEnemies[i].cooldown--;
     }
 
-    let enemyImgSrc = "sprites/enemy/enemy_";
+    let state = 0;
 
     let theta = Math.atan((player.y - renderedEnemies[i].y) / (player.x - renderedEnemies[i].x));
 
@@ -302,18 +300,16 @@ function updateEnemies() {
     }
 
     if (Math.PI/4 <= theta && theta < 3*Math.PI/4) {
-      enemyImgSrc += 0;
+      state = 0;
     } else if (-Math.PI/4 <= theta && theta < Math.PI/4) {
-      enemyImgSrc += 1;
+      state = 1;
     } else if (3*Math.PI/4 <= theta && theta < 5*Math.PI/4) {
-      enemyImgSrc += 3;
+      state = 3;
     } else {
-      enemyImgSrc += 2;
+      state = 2;
     }
 
-    enemyImgSrc += ".png"
-
-    renderedEnemies[i].img.src = enemyImgSrc;
+    renderedEnemies[i].img = ENEMY_IMAGES[state];
   }
 }
 

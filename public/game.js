@@ -16,6 +16,62 @@ var TEXTUREMAP = {};
 // TEXTUREMAP[COLORMAP.corridor.l] = TEXTURESETS.wall;
 // TEXTUREMAP[COLORMAP.corridor.r] = TEXTURESETS.wall;
 
+var ENEMY_IMAGES = {
+  "0": new Image(),
+  "1": new Image(),
+  "2": new Image(),
+  "3": new Image()
+}
+
+for (i in ENEMY_IMAGES) {
+  ENEMY_IMAGES[i].src = `sprites/enemy/enemy_${i}.png`
+}
+
+var PLAYER_IMAGES = {
+  "0": {
+    "-3": new Image(),
+    "-2": new Image(),
+    "-1": new Image(),
+    "0": new Image(),
+    "1": new Image(),
+    "2": new Image(),
+    "3": new Image()
+  },
+  "1": {
+    "-3": new Image(),
+    "-2": new Image(),
+    "-1": new Image(),
+    "0": new Image(),
+    "1": new Image(),
+    "2": new Image(),
+    "3": new Image()
+  },
+  "2": {
+    "-3": new Image(),
+    "-2": new Image(),
+    "-1": new Image(),
+    "0": new Image(),
+    "1": new Image(),
+    "2": new Image(),
+    "3": new Image()
+  },
+  "3": {
+    "-3": new Image(),
+    "-2": new Image(),
+    "-1": new Image(),
+    "0": new Image(),
+    "1": new Image(),
+    "2": new Image(),
+    "3": new Image()
+  },
+}
+
+for (i in PLAYER_IMAGES) {
+  for (j in PLAYER_IMAGES[i]) {
+    PLAYER_IMAGES[i][j].src = `sprites/player/player_${i}_${j}.png`;
+  }
+}
+
 var LOOT_TABLE = {
   "5": ["dmgUp"], // Some rare items (permanent buffs)
   "25": ["potion"], // Some uncommon items (health drops)
