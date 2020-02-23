@@ -468,7 +468,7 @@ function animate() {
 }
 
 var interval = setInterval(function() {
-  if (canvas != null) {
+  if (context != null) {
     init();
   }
 }, 500);
