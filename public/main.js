@@ -265,6 +265,8 @@ function updateEnemies() {
       }
       renderedEnemies.splice(i, 1);
       i--;
+      let deathMusic = new Audio("audio/death.mp3")
+      deathMusic.play();
 
       continue;
     } else if (renderedEnemies[i].near(player.x, player.y) && renderedEnemies[i].cooldown <= 0) {
